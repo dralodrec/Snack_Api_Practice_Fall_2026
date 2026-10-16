@@ -56,10 +56,8 @@ All classes must live in `com.example.movienight` or a package below it. `@Sprin
 
 A few things worth noticing in the code:
 
-- **Constructor injection.** Services and controllers never use `new` to create their dependencies. Spring sees the constructor parameter and passes in the right object (a "bean").
 - **Free CRUD.** `JpaRepository<Movie, Long>` gives you `save`, `findAll`, `findById`, `deleteById` and `count` with no code.
 - **Derived queries.** Spring builds SQL from a method name: `findByGenreIgnoreCase(String genre)` becomes `WHERE LOWER(genre) = LOWER(?)`.
-- **Errors.** The service throws `ResponseStatusException` with a status like `404 NOT_FOUND` or `400 BAD_REQUEST`, and Spring turns it into that HTTP response.
 
 ## Running it
 
@@ -99,8 +97,6 @@ The API is at `http://localhost:8080`.
 | GET | `/api/movies?genre=Comedy` | none | Movies in that genre |
 | GET | `/api/movies/{id}` | none | One movie, or 404 |
 | POST | `/api/movies` | Movie JSON | 201, the saved movie with its new id |
-| PUT | `/api/movies/{id}` | Movie JSON | The updated movie |
-| DELETE | `/api/movies/{id}` | none | 204, no content |
 
 Example body:
 
